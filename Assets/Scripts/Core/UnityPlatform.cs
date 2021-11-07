@@ -1,6 +1,6 @@
 ﻿public sealed class UnityPlatform : BasePlatform
 {
-    public UnityPlatform(INotificationManager notificationManager, IBackendManager backendManager) : base(notificationManager, backendManager)
+    public UnityPlatform(ISceneManager sceneManager, IBackendManager backendManager) : base(sceneManager, backendManager)
     {
     }
 }

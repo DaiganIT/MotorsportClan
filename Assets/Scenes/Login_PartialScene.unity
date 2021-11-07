@@ -375,6 +375,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   notification: {fileID: 2084252513}
   notificationWithLoader: {fileID: 4828875818625267643}
+  loginSceneName: Login_PartialScene
+  accountCreationSceneName: CreateAccount_PartialScene
 --- !u!1 &1284671486
 GameObject:
   m_ObjectHideFlags: 0

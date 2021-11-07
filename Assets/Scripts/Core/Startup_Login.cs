@@ -5,26 +5,23 @@ public class Startup_Login : MonoBehaviour
 {
     [SerializeField] Notification notification;
     [SerializeField] NotificationWithLoader notificationWithLoader;
+    [SerializeField] string loginSceneName;
+    [SerializeField] string accountCreationSceneName;
 
     private void Start()
     {
-        // set the notification manager properties
-        if (Application.platform == RuntimePlatform.WindowsEditor)
-        {
-            GameManager.Instance.Initialise(new UnityPlatform(new NotificationManager(notification, notificationWithLoader), new FakeBackendManager()));
-        }
-
         // dologin
         StartCoroutine(DoLogin());
     }
 
     IEnumerator DoLogin()
     {
-        GameManager.Instance.Platform.NotificationManager.ShowNotificationWithLoader("Logging in");
+        notificationWithLoader.ShowNotification("Logging in");
 
         var response = GameManager.Instance.Platform.BackendManager.Login(new LoginRequest { deviceId = "testDeviceId" });
         yield return new WaitUntil(() => response.isCompleted);
 
-        GameManager.Instance.Platform.NotificationManager.HideNotificationWithLoader();
+        notificationWithLoader.HideNotification();
+        GameManager.Instance.Platform.SceneManager.SwapPartialView(loginSceneName, accountCreationSceneName);
     }
 }

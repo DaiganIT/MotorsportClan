@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Startup : MonoBehaviour
 {
@@ -7,12 +6,12 @@ public class Startup : MonoBehaviour
 
     void Awake()
     {
-        var operation = SceneManager.LoadSceneAsync(loadScene, LoadSceneMode.Additive);
-        operation.completed += OnSceneLoaded;
-    }
+        // set the notification manager properties
+        if (Application.platform == RuntimePlatform.WindowsEditor)
+        {
+            GameManager.Instance.Initialise(new UnityPlatform(new UnitySceneManager(), new FakeBackendManager()));
+        }
 
-    private void OnSceneLoaded(AsyncOperation op)
-    {
-
+        GameManager.Instance.Platform.SceneManager.AddPartialView(loadScene);
     }
 }

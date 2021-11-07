@@ -1,5 +1,5 @@
 ﻿public interface IPlatform
 {
-    INotificationManager NotificationManager { get; }
+    ISceneManager SceneManager { get; }
     IBackendManager BackendManager { get; }
 }

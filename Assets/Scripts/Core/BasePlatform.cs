@@ -1,11 +1,11 @@
 ﻿public class BasePlatform : IPlatform
 {
-    public BasePlatform(INotificationManager notificationManager, IBackendManager backendManager) 
+    public BasePlatform(ISceneManager sceneManager, IBackendManager backendManager) 
     {
-        this.NotificationManager = notificationManager;
         this.BackendManager = backendManager;
+        this.SceneManager = sceneManager;
     }
 
-    public INotificationManager NotificationManager { get; protected set; }
+    public ISceneManager SceneManager { get; protected set; }
     public IBackendManager BackendManager { get; protected set; }
 }
