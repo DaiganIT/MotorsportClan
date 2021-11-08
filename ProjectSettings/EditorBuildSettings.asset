@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Login_PartialScene.unity
     guid: 67c3344b7061397448ad99efab18f978
+  - enabled: 1
+    path: Assets/Scenes/CreateAccount_PartialScene.unity
+    guid: 7fea70624b0fccb45b33149c8170d53b
   m_configObjects: {}

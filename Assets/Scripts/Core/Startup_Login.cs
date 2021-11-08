@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class Startup_Login : MonoBehaviour
 {
-    [SerializeField] Notification notification;
-    [SerializeField] NotificationWithLoader notificationWithLoader;
     [SerializeField] string loginSceneName;
     [SerializeField] string accountCreationSceneName;
 
@@ -16,12 +14,12 @@ public class Startup_Login : MonoBehaviour
 
     IEnumerator DoLogin()
     {
-        notificationWithLoader.ShowNotification("Logging in");
+        GameManager.Instance.NotificationWithLoader.ShowNotification("Logging in");
 
         var response = GameManager.Instance.Platform.BackendManager.Login(new LoginRequest { deviceId = "testDeviceId" });
         yield return new WaitUntil(() => response.isCompleted);
 
-        notificationWithLoader.HideNotification();
+        GameManager.Instance.NotificationWithLoader.HideNotification();
         GameManager.Instance.Platform.SceneManager.SwapPartialView(loginSceneName, accountCreationSceneName);
     }
 }

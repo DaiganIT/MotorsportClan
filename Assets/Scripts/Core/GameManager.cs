@@ -21,7 +21,10 @@ public class GameManager
 
     bool initialized = false;
 
-    public void Initialise(UnityPlatform platform)
+    public Notification Notification { get; private set; }
+    public NotificationWithLoader NotificationWithLoader { get; private set; }
+
+    public void Initialise(UnityPlatform platform, Notification notification, NotificationWithLoader notificationWithLoader)
     {
         if (initialized)
         {
@@ -29,7 +32,9 @@ public class GameManager
             return;
         }
 
-        this.Platform = platform;
+        Platform = platform;
+        Notification = notification;
+        NotificationWithLoader = notificationWithLoader;
 
         initialized = true;
     }
