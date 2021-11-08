@@ -13,6 +13,7 @@ public class GameManager
     }
 
     public IPlatform Platform { get; private set; }
+    public INotificationManager NotificationManager { get; private set; }
 
     static GameManager()
     {
@@ -21,10 +22,7 @@ public class GameManager
 
     bool initialized = false;
 
-    public Notification Notification { get; private set; }
-    public NotificationWithLoader NotificationWithLoader { get; private set; }
-
-    public void Initialise(UnityPlatform platform, Notification notification, NotificationWithLoader notificationWithLoader)
+    public void Initialise(UnityPlatform platform, INotificationManager notificationManager)
     {
         if (initialized)
         {
@@ -33,8 +31,7 @@ public class GameManager
         }
 
         Platform = platform;
-        Notification = notification;
-        NotificationWithLoader = notificationWithLoader;
+        NotificationManager = notificationManager;
 
         initialized = true;
     }

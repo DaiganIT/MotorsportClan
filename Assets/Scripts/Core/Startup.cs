@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class Startup : MonoBehaviour
 {
-    [SerializeField] Notification notification;
-    [SerializeField] NotificationWithLoader notificationWithLoader;
     [SerializeField] string loadScene;
 
     void Awake()
@@ -13,8 +11,7 @@ public class Startup : MonoBehaviour
         {
             GameManager.Instance.Initialise(
                 new UnityPlatform(new UnitySceneManager(), new FakeBackendManager()),
-                notification,
-                notificationWithLoader
+                new NotificationManager()
                 );
         }
 

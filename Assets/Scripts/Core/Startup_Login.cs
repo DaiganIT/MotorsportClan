@@ -14,12 +14,12 @@ public class Startup_Login : MonoBehaviour
 
     IEnumerator DoLogin()
     {
-        GameManager.Instance.NotificationWithLoader.ShowNotification("Logging in");
+        GameManager.Instance.NotificationManager.ShowNotificationWithLoader("Logging in");
 
         var response = GameManager.Instance.Platform.BackendManager.Login(new LoginRequest { deviceId = "testDeviceId" });
         yield return new WaitUntil(() => response.isCompleted);
 
-        GameManager.Instance.NotificationWithLoader.HideNotification();
+        GameManager.Instance.NotificationManager.HideNotificationWithLoader();
         GameManager.Instance.Platform.SceneManager.SwapPartialView(loginSceneName, accountCreationSceneName);
     }
 }

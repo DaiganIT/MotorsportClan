@@ -1,4 +1,5 @@
 ﻿using DG.Tweening;
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -20,21 +21,32 @@ public class NotificationWithLoader : MonoBehaviour
     private void Awake()
     {
         group = GetComponent<CanvasGroup>();
+        
     }
 
     private void Start()
     {
+        GameManager.Instance.NotificationManager.RegisterShow(ShowNotification);
+        GameManager.Instance.NotificationManager.RegisterHide(HideNotification);
         group.alpha = 0;
     }
 
-    public void ShowNotification(string text)
+    private void OnDestroy()
     {
-        infoText.text = text;
+        GameManager.Instance.NotificationManager.UnregisterShow(ShowNotification);
+        GameManager.Instance.NotificationManager.UnregisterHide(HideNotification);
+    }
+
+    public void ShowNotification(object sender, NotificationEventArgs eventArgs)
+    {
+        if (!eventArgs.HasLoader) return;
+
+        infoText.text = eventArgs.Text;
         var fadeIn = group.DOFade(1, fadeInTime).OnStart(() => { IsFadingIn = true; }).OnComplete(() => { IsFadingIn = false; IsShown = true; });
         fadeIn.Play();
     }
 
-    public void HideNotification()
+    public void HideNotification(object sender, EventArgs eventArgs)
     {
         var fadeOut = group.DOFade(0, fadeOutTime).OnStart(() => { IsFadingOut = true; IsShown = false; }).OnComplete(() => { IsFadingOut = false; });
         fadeOut.Play();
@@ -48,12 +60,12 @@ public class NotificationWithLoader : MonoBehaviour
     [ContextMenu("Test Show Notification")]
     public void TestShowNotification()
     {
-        ShowNotification("This is a test notification");
+        ShowNotification(null, new NotificationEventArgs("This is a test notification", true));
     }
 
     [ContextMenu("Test Hide Notification")]
     public void TestHideNotification()
     {
-        HideNotification();
+        HideNotification(null, null);
     }
 }

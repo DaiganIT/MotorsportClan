@@ -22,12 +22,20 @@ public class Notification : MonoBehaviour
 
     private void Start()
     {
+        GameManager.Instance.NotificationManager.RegisterShow(ShowNotification);
         group.alpha = 0;
     }
 
-    public void ShowNotification(string text)
+    private void OnDestroy()
     {
-        infoText.text = text;
+        GameManager.Instance.NotificationManager.UnregisterShow(ShowNotification);
+    }
+
+
+    public void ShowNotification(object sender, NotificationEventArgs eventArgs)
+    {
+        if (eventArgs.HasLoader) return;
+        infoText.text = eventArgs.Text;
 
         var sequence = DOTween.Sequence();
 
@@ -44,6 +52,6 @@ public class Notification : MonoBehaviour
     [ContextMenu("Test Notification")]
     public void TestNotification()
     {
-        ShowNotification("This is a test notification");
+        ShowNotification(null, new NotificationEventArgs("test"));
     }
 }
