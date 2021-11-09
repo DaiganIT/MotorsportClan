@@ -18,19 +18,18 @@ public class Notification : MonoBehaviour
     private void Awake()
     {
         group = GetComponent<CanvasGroup>();
+        group.alpha = 0;
     }
 
     private void Start()
     {
         GameManager.Instance.NotificationManager.RegisterShow(ShowNotification);
-        group.alpha = 0;
     }
 
     private void OnDestroy()
     {
         GameManager.Instance.NotificationManager.UnregisterShow(ShowNotification);
     }
-
 
     public void ShowNotification(object sender, NotificationEventArgs eventArgs)
     {

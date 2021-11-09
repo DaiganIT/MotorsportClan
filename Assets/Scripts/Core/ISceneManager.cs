@@ -1,8 +1,10 @@
-﻿using UnityEngine;
+﻿using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
+using UnityEngine.ResourceManagement.ResourceProviders;
 
 public interface ISceneManager
 {
-    public AsyncOperation AddPartialView(string name);
-    public AsyncOperation RemovePartialView(string name);
-    public AsyncOperation SwapPartialView(string old, string replacement);
+    public AsyncOperationHandle<SceneInstance> AddPartialView(AssetReference sceneAsset);
+    public AsyncOperationHandle<SceneInstance>? RemovePartialView(string name);
+    public AsyncOperationHandle<SceneInstance> SwapPartialView(string old, AssetReference replacement);
 }

@@ -21,14 +21,13 @@ public class NotificationWithLoader : MonoBehaviour
     private void Awake()
     {
         group = GetComponent<CanvasGroup>();
-        
+        group.alpha = 0;
     }
 
     private void Start()
     {
         GameManager.Instance.NotificationManager.RegisterShow(ShowNotification);
         GameManager.Instance.NotificationManager.RegisterHide(HideNotification);
-        group.alpha = 0;
     }
 
     private void OnDestroy()

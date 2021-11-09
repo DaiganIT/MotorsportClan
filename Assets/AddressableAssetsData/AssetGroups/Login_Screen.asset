@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Login_Screen
+  m_EditorClassIdentifier: 
+  m_GroupName: Login_Screen
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 2f3f4c0db13ea4045b434ebcfebdb7f1
+  m_SerializeEntries:
+  - m_GUID: 67c3344b7061397448ad99efab18f978
+    m_Address: Scenes/Login_PartialScene.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 102900000, guid: 67c3344b7061397448ad99efab18f978, type: 3}
+    m_TargetAsset: {fileID: 102900000, guid: 67c3344b7061397448ad99efab18f978, type: 3}
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: bc392c2e1cb7a6f4a8042db43b3b66b3, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: eef1a604e6905f945a47a274c6c9172a, type: 2}
+    - {fileID: 11400000, guid: e7605edc26a655e418b81eb4a5dcd91a, type: 2}

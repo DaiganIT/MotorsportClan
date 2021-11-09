@@ -1,11 +1,9 @@
 ﻿public class BasePlatform : IPlatform
 {
-    public BasePlatform(ISceneManager sceneManager, IBackendManager backendManager) 
+    public BasePlatform(IBackendManager backendManager) 
     {
-        this.BackendManager = backendManager;
-        this.SceneManager = sceneManager;
+        BackendManager = backendManager;
     }
 
-    public ISceneManager SceneManager { get; protected set; }
     public IBackendManager BackendManager { get; protected set; }
 }

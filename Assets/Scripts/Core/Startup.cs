@@ -1,8 +1,9 @@
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 public class Startup : MonoBehaviour
 {
-    [SerializeField] string loadScene;
+    [SerializeField] AssetReference loadSceneAssetReference;
 
     void Awake()
     {
@@ -10,11 +11,19 @@ public class Startup : MonoBehaviour
         if (Application.platform == RuntimePlatform.WindowsEditor)
         {
             GameManager.Instance.Initialise(
-                new UnityPlatform(new UnitySceneManager(), new FakeBackendManager()),
-                new NotificationManager()
+                new UnitySceneManager(),
+                new UnityPlatform(new FakeBackendManager()),
+                new NotificationManager(),
+                new LoaderManager()
                 );
         }
 
-        GameManager.Instance.Platform.SceneManager.AddPartialView(loadScene);
+        if (!loadSceneAssetReference.RuntimeKeyIsValid())
+        {
+            Debug.LogError("Login Partial Scene Key is invalid");
+            return;
+        }
+
+        GameManager.Instance.SceneManager.AddPartialView(loadSceneAssetReference);
     }
 }

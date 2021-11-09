@@ -1,10 +1,11 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 public class Startup_Login : MonoBehaviour
 {
     [SerializeField] string loginSceneName;
-    [SerializeField] string accountCreationSceneName;
+    [SerializeField] AssetReference accountCreationSceneName;
 
     private void Start()
     {
@@ -20,6 +21,6 @@ public class Startup_Login : MonoBehaviour
         yield return new WaitUntil(() => response.isCompleted);
 
         GameManager.Instance.NotificationManager.HideNotificationWithLoader();
-        GameManager.Instance.Platform.SceneManager.SwapPartialView(loginSceneName, accountCreationSceneName);
+        GameManager.Instance.SceneManager.SwapPartialView(loginSceneName, accountCreationSceneName);
     }
 }

@@ -8,10 +8,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Startup_Scene.unity
     guid: c29edec3cffaf154c8834289759b533d
-  - enabled: 1
-    path: Assets/Scenes/Login_PartialScene.unity
-    guid: 67c3344b7061397448ad99efab18f978
-  - enabled: 1
-    path: Assets/Scenes/CreateAccount_PartialScene.unity
-    guid: 7fea70624b0fccb45b33149c8170d53b
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.addressableassets: {fileID: 11400000, guid: c061a1fb93f89ae4e9132724b8aac481,
+      type: 2}
