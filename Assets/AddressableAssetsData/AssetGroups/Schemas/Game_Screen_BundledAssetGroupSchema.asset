@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e5d17a21594effb4e9591490b009e7aa, type: 3}
-  m_Name: CreateTeam_Screen_BundledAssetGroupSchema
+  m_Name: Game_Screen_BundledAssetGroupSchema
   m_EditorClassIdentifier: 
   m_Group: {fileID: 11400000, guid: 9c0d9a7859e58e742bece212b7603689, type: 2}
   m_Compression: 1

@@ -16,6 +16,7 @@ public class GameManager
     public IPlatform Platform { get; private set; }
     public INotificationManager NotificationManager { get; private set; }
     public ILoaderManager LoaderManager { get; private set; }
+    public IEventManager EventManager { get; private set; }
 
     static GameManager()
     {
@@ -24,7 +25,7 @@ public class GameManager
 
     bool initialized = false;
 
-    public void Initialise(ISceneManager sceneManager, UnityPlatform platform, INotificationManager notificationManager, ILoaderManager loaderManager)
+    public void Initialise(ISceneManager sceneManager, UnityPlatform platform, INotificationManager notificationManager, ILoaderManager loaderManager, IEventManager eventManager)
     {
         if (initialized)
         {
@@ -36,6 +37,7 @@ public class GameManager
         Platform = platform;
         NotificationManager = notificationManager;
         LoaderManager = loaderManager;
+        EventManager = eventManager;
 
         initialized = true;
     }

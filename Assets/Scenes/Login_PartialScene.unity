@@ -363,6 +363,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loginSceneName: Login_PartialScene
   accountCreationSceneName:
-    m_AssetGUID: 7fea70624b0fccb45b33149c8170d53b
+    m_AssetGUID: 5f3ba704e8d10ff4aa38cccbc842c89b
     m_SubObjectName: 
     m_SubObjectType: 
