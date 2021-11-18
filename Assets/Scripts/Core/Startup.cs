@@ -39,13 +39,7 @@ public class Startup : MonoBehaviour
     {
         if (eventName == EventName.LoginFinished)
         {
-            var gameSceneLoadOperation = GameManager.Instance.SceneManager.SwapPartialView("Login_PartialScene", gameSceneAssetReference);
-            gameSceneLoadOperation.Completed += GameSceneLoadOperation_Completed;
+            GameManager.Instance.SceneManager.SwapPartialView("Login_PartialScene", gameSceneAssetReference);
         }
-    }
-
-    private void GameSceneLoadOperation_Completed(UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle<UnityEngine.ResourceManagement.ResourceProviders.SceneInstance> obj)
-    {
-        GameManager.Instance.LoaderManager.HideLoader();
     }
 }

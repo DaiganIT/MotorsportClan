@@ -10,6 +10,8 @@ public class Car : MonoBehaviour
     [SerializeField] float rotationTimeY;
     [SerializeField] float rotationTimeZ;
     [SerializeField] Transform rotationMesh;
+    [SerializeField] Transform wheel_front_left;
+    [SerializeField] Transform wheel_front_right;
 
     float previousHorizontal;
     float currentRotationVelocityX;
@@ -55,7 +57,31 @@ public class Car : MonoBehaviour
         var finalRotationZ = Mathf.SmoothDampAngle(rotationMesh.rotation.eulerAngles.z, rotateOn ? rotationAmountZ * horizontal : 0, ref currentRotationVelocityZ, rotationTimeZ);
         var finalRotationY = Mathf.SmoothDampAngle(rotationMesh.rotation.eulerAngles.y, rotateOn ? rotationAmountY * horizontal : 0, ref currentRotationVelocityY, rotationTimeY);
         rotationMesh.rotation = Quaternion.Euler(rotationMesh.rotation.eulerAngles.x, finalRotationY, finalRotationZ);
+        wheel_front_right.rotation = Quaternion.Euler(wheel_front_right.rotation.eulerAngles.x, finalRotationY, wheel_front_right.rotation.eulerAngles.z);
+        wheel_front_left.rotation = Quaternion.Euler(wheel_front_left.rotation.eulerAngles.x, finalRotationY, wheel_front_left.rotation.eulerAngles.z);
 
         previousHorizontal = horizontal;
+    }
+
+    [ContextMenu("RestoreRotation")]
+    public void RestoreRotation()
+    {
+        rotationMesh.rotation = Quaternion.Euler(rotationMesh.rotation.eulerAngles.x, 0, 0);
+        wheel_front_right.rotation = Quaternion.Euler(wheel_front_right.rotation.eulerAngles.x, 0, wheel_front_right.rotation.eulerAngles.z);
+        wheel_front_left.rotation = Quaternion.Euler(wheel_front_left.rotation.eulerAngles.x, 0, wheel_front_left.rotation.eulerAngles.z);
+    }
+    [ContextMenu("TestRight")]
+    public void RotateRight()
+    {
+        rotationMesh.rotation = Quaternion.Euler(rotationMesh.rotation.eulerAngles.x, rotationAmountY, rotationAmountZ);
+        wheel_front_right.rotation = Quaternion.Euler(wheel_front_right.rotation.eulerAngles.x, rotationAmountY, wheel_front_right.rotation.eulerAngles.z);
+        wheel_front_left.rotation = Quaternion.Euler(wheel_front_left.rotation.eulerAngles.x, rotationAmountY, wheel_front_left.rotation.eulerAngles.z);
+    }
+    [ContextMenu("TestLeft")]
+    public void RotateLeft()
+    {
+        rotationMesh.rotation = Quaternion.Euler(rotationMesh.rotation.eulerAngles.x, -rotationAmountY, -rotationAmountZ);
+        wheel_front_right.rotation = Quaternion.Euler(wheel_front_right.rotation.eulerAngles.x, -rotationAmountY, wheel_front_right.rotation.eulerAngles.z);
+        wheel_front_left.rotation = Quaternion.Euler(wheel_front_left.rotation.eulerAngles.x, -rotationAmountY, wheel_front_left.rotation.eulerAngles.z);
     }
 }

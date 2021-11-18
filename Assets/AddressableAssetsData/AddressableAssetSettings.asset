@@ -31,6 +31,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: de01fbbeb7a12c94a91bd87c8bf9d744, type: 2}
   - {fileID: 11400000, guid: 347b26530d55382488a950c90ce436ca, type: 2}
   - {fileID: 11400000, guid: 9c0d9a7859e58e742bece212b7603689, type: 2}
+  - {fileID: 11400000, guid: 3fe3451d37f657549a6514f7877af415, type: 2}
+  - {fileID: 11400000, guid: 35703fc822b9d4e4992b7dc68ea07098, type: 2}
   m_BuildSettings:
     m_CompileScriptsInVirtualMode: 0
     m_CleanupStreamingAssetsAfterBuilds: 1
@@ -72,6 +74,8 @@ MonoBehaviour:
   m_LabelTable:
     m_LabelNames:
     - default
+    - cars
+    - environments/default
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 7be0cd04aa0f71440ac2e1d576575271, type: 2}
