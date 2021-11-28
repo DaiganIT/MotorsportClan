@@ -10,7 +10,6 @@ public class Startup_Game : MonoBehaviour
 {
     [SerializeField] AssetReference defaultCar;
     [SerializeField] CinemachineVirtualCamera chaseCamera;
-    [SerializeField] float environmentPieceLength = 5f;
     [SerializeField] string environmentDefaultLabel = "default";
     [SerializeField] string environmentPrefix = "environments/{0}";
 
@@ -52,7 +51,7 @@ public class Startup_Game : MonoBehaviour
             // load default environment
             env = environmentDefaultLabel;
         }
-        var loadEnvOperation = Addressables.LoadAssetsAsync<GameObject>($"{environmentPrefix}{env}", null);
+        var loadEnvOperation = Addressables.LoadSceneAsync($"{environmentPrefix}{env}");
         yield return loadEnvOperation;
 
         if (loadEnvOperation.Status == AsyncOperationStatus.Failed)
@@ -61,15 +60,15 @@ public class Startup_Game : MonoBehaviour
             yield break;
         }
 
-        environmentsPieces = loadEnvOperation.Result;
+        //environmentsPieces = loadEnvOperation.Result;
 
-        // spawn 3 random environments.
-        for(int i = 0; i < 3; i++)
-        {
-            var randomPiece = environmentsPieces[Random.Range(0, environmentsPieces.Count)];
-            var createdPiece = Instantiate(randomPiece);
-            createdPiece.transform.position = new Vector3(0, 0, i * environmentPieceLength);
-        }
+        //// spawn 3 random environments.
+        //for(int i = 0; i < 3; i++)
+        //{
+        //    var randomPiece = environmentsPieces[Random.Range(0, environmentsPieces.Count)];
+        //    var createdPiece = Instantiate(randomPiece);
+        //    createdPiece.transform.position = new Vector3(0, 0, i * environmentPieceLength);
+        //}
 
         // load ui
 
